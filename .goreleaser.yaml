@@ -1,5 +1,5 @@
 #
-# Example goreleaser config with nfpm GPG signing.
+# Example goreleaser config with nfpm package signing.
 #
 # See also: .github/workflows/release.yml
 
@@ -33,7 +33,7 @@ nfpms:
     vendor: GoReleaser
     homepage: https://goreleaser.com
     maintainer: GoReleaser <goreleaser@goreleaser.com>
-    description: Example project demonstrating nfpm GPG signing with a passphrase-protected key.
+    description: Example project demonstrating nfpm package signing with passphrase-protected keys.
     license: MIT
     formats:
       - deb

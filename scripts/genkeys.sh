@@ -28,7 +28,8 @@ rm key-config
 echo "Key exported to gpg.asc"
 echo "Passphrase: example"
 
-openssl genrsa -traditional -out apk.rsa 4096
-openssl rsa -in apk.rsa -pubout -out apk.rsa.pub
+openssl genrsa -traditional -aes256 -passout pass:example -out apk.rsa 4096
+openssl rsa -in apk.rsa -passin pass:example -pubout -out apk.rsa.pub
 
-echo "APK key exported to apk.rsa (private) and apk.rsa.pub (public)"
+echo "APK key exported to apk.rsa (private, encrypted) and apk.rsa.pub (public)"
+echo "APK Passphrase: example"
