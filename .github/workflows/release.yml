@@ -35,4 +35,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NFPM_DEFAULT_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-          NFPM_APK_PASSPHRASE: ${{ secrets.APK_PASSPHRASE }}
