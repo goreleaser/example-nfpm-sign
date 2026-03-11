@@ -23,12 +23,15 @@ This creates:
 
 ### 2. Configure GitHub secrets
 
-| Secret           | Value                              |
-| ---------------- | ---------------------------------- |
-| `GPG_KEY`        | Contents of `gpg.asc`              |
-| `GPG_PASSPHRASE` | The GPG key passphrase (`example`) |
-| `APK_KEY`        | Contents of `apk.rsa`              |
-| `APK_PASSPHRASE` | The APK key passphrase (`example`) |
+You'll need to set the key contents and the password.
+
+In our example, both keys have the same password, so we can:
+
+```bash
+gh secret set NFPM_DEFAULT_PASSPHRASE -b example
+gh secret set GPG_KEY <./gpg.asc
+gh secret set APK_KEY <./apk.rsa
+```
 
 ### 3. Run locally
 

@@ -34,4 +34,4 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NFPM_DEFAULT_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          NFPM_DEFAULT_PASSPHRASE: ${{ secrets.NFPM_DEFAULT_PASSPHRASE }}
