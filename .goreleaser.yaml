@@ -1,0 +1,51 @@
+#
+# Example goreleaser config with nfpm GPG signing.
+#
+# See also: .github/workflows/release.yml
+
+version: 2
+
+project_name: example
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    mod_timestamp: "{{ .CommitTimestamp }}"
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
+
+archives:
+  - formats: [tar.gz]
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+
+checksum:
+  name_template: "checksums.txt"
+
+nfpms:
+  - package_name: example
+    vendor: GoReleaser
+    homepage: https://goreleaser.com
+    maintainer: GoReleaser <goreleaser@goreleaser.com>
+    description: Example project demonstrating nfpm GPG signing with a passphrase-protected key.
+    license: MIT
+    formats:
+      - deb
+      - rpm
+      - apk
+    rpm:
+      signature:
+        key_file: '{{ envOrDefault "GPG_KEY_PATH" "gpg.asc" }}'
+    deb:
+      signature:
+        key_file: '{{ envOrDefault "GPG_KEY_PATH" "gpg.asc" }}'
+    apk:
+      signature:
+        key_file: '{{ envOrDefault "APK_KEY_PATH" "apk.rsa" }}'
+        key_name: example@goreleaser.com

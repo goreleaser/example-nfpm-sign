@@ -1,0 +1,4 @@
+dist/
+example-nfpm-sign
+apk.rsa*
+gpg.asc
